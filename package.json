@@ -1,0 +1,24 @@
+{
+  "name": "supportbank",
+  "version": "1.0.0",
+  "description": "Lesson 3.",
+  "main": "index.js",
+  "dependencies": {
+    "moment": "^2.27.0",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abbigrundy/supportBank-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abbigrundy/supportBank-js/issues"
+  },
+  "homepage": "https://github.com/abbigrundy/supportBank-js#readme"
+}
