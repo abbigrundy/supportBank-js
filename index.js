@@ -10,14 +10,11 @@ fs.readFile("Transactions2014.csv", function (err, data) {
   //find the users in the transactionsDataArray
   for (i = 1; i < transactionsDataArray.length; i++) {
     let item = transactionsDataArray[i].split(",");
-    //console.log(item);
 
-    // take an proposed user already in the user array
     let user1 = item[1];
 
     let user2 = item[2];
 
-    // check too see if that user string, matches a string of the existing users
     if (!usersArray.includes(user1)) {
       // if it does not  match
       usersArray.push(user1);
@@ -29,13 +26,39 @@ fs.readFile("Transactions2014.csv", function (err, data) {
     }
   }
   // convert array of users into an array of accounts(object)
-  console.log(usersArray);
-
   const users = usersArray.map(function (name) {
     return {
       name: name,
       balance: 0,
     };
   });
+
+  // get all users from the from section
+  for (i = 1; i < transactionsDataArray.length; i++) {
+    let item = transactionsDataArray[i].split(",");
+    let from = item[1];
+    let to = item[2];
+    let amount = parseFloat(item[4]);
+
+    const payer = users.find(function (user) {
+      if (from === user.name) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    payer.balance = payer.balance - amount;
+
+    const receiver = users.find(function (user) {
+      if (to === user.name) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    receiver.balance = receiver.balance + amount;
+  }
   console.log(users);
 });
