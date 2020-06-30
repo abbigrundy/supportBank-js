@@ -5,7 +5,6 @@ fs.readFile("Transactions2014.csv", function (err, data) {
 
   //store all single lined transactions
   let transactionsDataArray = transactionsData.split("\n");
-  let existingArray = [];
   let usersArray = [];
   //find the users in the transactionsDataArray
   for (i = 1; i < transactionsDataArray.length; i++) {
@@ -16,12 +15,10 @@ fs.readFile("Transactions2014.csv", function (err, data) {
     let user2 = item[2];
 
     if (!usersArray.includes(user1)) {
-      // if it does not  match
       usersArray.push(user1);
     }
 
     if (!usersArray.includes(user2)) {
-      // if it does not  match
       usersArray.push(user2);
     }
   }
@@ -32,8 +29,7 @@ fs.readFile("Transactions2014.csv", function (err, data) {
       balance: 0,
     };
   });
-
-  // get all users from the from section
+  // this is for all users balance
   for (i = 1; i < transactionsDataArray.length; i++) {
     let item = transactionsDataArray[i].split(",");
     let from = item[1];
@@ -60,5 +56,23 @@ fs.readFile("Transactions2014.csv", function (err, data) {
 
     receiver.balance = receiver.balance + amount;
   }
-  console.log(users);
+  // let you find the balance for jon a
+
+  let oneUser = users.find(function (user) {
+    if (user.name === usersArray[0]) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  console.log(oneUser);
+
+  // TODO:
+  // List all transcations for Jon A
+  // Have the array of transactions
+  //
+  // Given I want to check a certain user
+  // I want to find that user from the user array.
+  // I then want to see all of the users transactions
 });
