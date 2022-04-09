@@ -4,7 +4,7 @@
   "description": "Lesson 3.",
   "main": "index.js",
   "dependencies": {
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {},
